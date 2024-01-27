@@ -20,6 +20,11 @@ function App() {
   }
 
   const [todos,setTodos] = useState(loadTodosFromLocal)
+    //everytime todos change call this 
+  useEffect( ()=>{
+    console.log("Saving todos to local storage")
+    localStorage.setItem("ITEM",JSON.stringify(todos))
+  },[todos])
 
 
   const deleteTodo = (id) =>{
@@ -57,12 +62,6 @@ function App() {
   }
 
   console.log(todos)
-
-  //everytime todos change call this 
-  useEffect( ()=>{
-    console.log("Saving todos to local storage")
-    localStorage.setItem("ITEM",JSON.stringify(todos))
-  },[todos])
 
   //Onchange ->
   // Whenever we change input, call setNewItem with that, which will rerender the componenr
